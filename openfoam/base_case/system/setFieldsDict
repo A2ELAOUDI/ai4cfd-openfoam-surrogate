@@ -1,0 +1,38 @@
+/*--------------------------------*- C++ -*----------------------------------*\
+| =========                 |                                                 |
+| \\      /  F ield         | OpenFOAM: The Open Source CFD Toolbox           |
+|  \\    /   O peration     | Version:  v2312                                 |
+|   \\  /    A nd           | Website:  www.openfoam.com                      |
+|    \\/     M anipulation  |                                                 |
+\*---------------------------------------------------------------------------*/
+FoamFile
+{
+    version     2.0;
+    format      ascii;
+    class       dictionary;
+    object      setFieldsDict;
+}
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
+
+// Default: entire domain is air (alpha.water = 0)
+defaultFieldValues
+(
+    volScalarFieldValue alpha.water 0
+);
+
+// Water column region: x in [0, waterWidth], y in [0, waterHeight]
+// These values are replaced by generate_cases.py for each case.
+regions
+(
+    boxToCell
+    {
+        // Box corners: (xMin yMin zMin) (xMax yMax zMax)
+        box (0 0 -1) (0.4 0.6 1);   // default: width=0.4 m, height=0.6 m
+        fieldValues
+        (
+            volScalarFieldValue alpha.water 1
+        );
+    }
+);
+
+// ************************************************************************* //

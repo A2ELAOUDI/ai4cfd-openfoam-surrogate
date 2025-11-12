@@ -1,0 +1,54 @@
+# OpenFOAM simulation output
+simulations/
+*/processor*/
+*/0.*[0-9]/
+*/[1-9]*/
+*/[1-9][0-9]*/
+*.foam
+postProcessing/
+dynamicCode/
+*.log
+
+# Large binary data
+*.pt
+*.pth
+data/
+checkpoints/
+
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+.venv/
+venv/
+env/
+.env
+*.egg-info/
+dist/
+build/
+.pytest_cache/
+.mypy_cache/
+
+# Jupyter
+.ipynb_checkpoints/
+*.ipynb_checkpoints
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Results (keep structure, ignore generated files)
+results/figures/*.png
+results/figures/*.pdf
+results/metrics.csv
+
+# Logs
+*.log
+logs/

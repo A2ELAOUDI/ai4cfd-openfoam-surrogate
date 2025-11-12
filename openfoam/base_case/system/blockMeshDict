@@ -1,0 +1,98 @@
+/*--------------------------------*- C++ -*----------------------------------*\
+| =========                 |                                                 |
+| \\      /  F ield         | OpenFOAM: The Open Source CFD Toolbox           |
+|  \\    /   O peration     | Version:  v2312                                 |
+|   \\  /    A nd           | Website:  www.openfoam.com                      |
+|    \\/     M anipulation  |                                                 |
+\*---------------------------------------------------------------------------*/
+FoamFile
+{
+    version     2.0;
+    format      ascii;
+    class       dictionary;
+    object      blockMeshDict;
+}
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
+
+// 2D domain: 4 m (x) × 2 m (y) × 0.1 m (z, one cell thick)
+// Resolution: 160 × 80 × 1  →  Δx = Δy = 0.025 m
+
+scale   1;
+
+// Domain dimensions — modified by generate_cases.py for each case
+xMax    4.0;
+yMax    2.0;
+zThick  0.1;
+
+vertices
+(
+    ( 0     0     0      )  // 0
+    ( $xMax 0     0      )  // 1
+    ( $xMax $yMax 0      )  // 2
+    ( 0     $yMax 0      )  // 3
+    ( 0     0     $zThick)  // 4
+    ( $xMax 0     $zThick)  // 5
+    ( $xMax $yMax $zThick)  // 6
+    ( 0     $yMax $zThick)  // 7
+);
+
+blocks
+(
+    // 160 cells in x, 80 in y, 1 in z
+    hex (0 1 2 3 4 5 6 7) (160 80 1) simpleGrading (1 1 1)
+);
+
+edges
+(
+);
+
+boundary
+(
+    leftWall
+    {
+        type wall;
+        faces
+        (
+            (0 4 7 3)
+        );
+    }
+
+    rightWall
+    {
+        type wall;
+        faces
+        (
+            (1 2 6 5)
+        );
+    }
+
+    lowerWall
+    {
+        type wall;
+        faces
+        (
+            (0 1 5 4)
+        );
+    }
+
+    atmosphere
+    {
+        type patch;
+        faces
+        (
+            (3 7 6 2)
+        );
+    }
+
+    defaultFaces
+    {
+        type empty;
+        faces
+        (
+            (0 3 2 1)
+            (4 5 6 7)
+        );
+    }
+);
+
+// ************************************************************************* //
