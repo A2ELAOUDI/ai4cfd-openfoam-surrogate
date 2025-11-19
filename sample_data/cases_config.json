@@ -1,0 +1,26 @@
+[
+  {
+    "case_id": "case_001",
+    "case_dir": "sample_data/case_001",
+    "water_height": 0.5,
+    "water_width": 0.4,
+    "domain_x": 4.0,
+    "domain_y": 2.0
+  },
+  {
+    "case_id": "case_002",
+    "case_dir": "sample_data/case_002",
+    "water_height": 0.65,
+    "water_width": 0.45,
+    "domain_x": 4.0,
+    "domain_y": 2.0
+  },
+  {
+    "case_id": "case_003",
+    "case_dir": "sample_data/case_003",
+    "water_height": 0.75,
+    "water_width": 0.55,
+    "domain_x": 4.0,
+    "domain_y": 2.0
+  }
+]
